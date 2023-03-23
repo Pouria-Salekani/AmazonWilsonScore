@@ -14,4 +14,4 @@ def getRate(url):
 
     print(data)
 
-getRate('https://www.amazon.com/Daisy-Jones-Taylor-Jenkins-Reid/product-reviews/1524798649/?_encoding=UTF8&pd_rd_w=NCCGT&content-id=amzn1.sym.64be5821-f651-4b0b-8dd3-4f9b884f10e5&pf_rd_p=64be5821-f651-4b0b-8dd3-4f9b884f10e5&pf_rd_r=P0CSWMGQD4WBNFV20N16&pd_rd_wg=gfa1J&pd_rd_r=db04e1dc-4f1e-485a-9c91-cd7d3090de03&ref_=pd_gw_crs_zg_bs_283155')
+#getRate('https://www.amazon.com/Daisy-Jones-Taylor-Jenkins-Reid/product-reviews/1524798649/?_encoding=UTF8&pd_rd_w=NCCGT&content-id=amzn1.sym.64be5821-f651-4b0b-8dd3-4f9b884f10e5&pf_rd_p=64be5821-f651-4b0b-8dd3-4f9b884f10e5&pf_rd_r=P0CSWMGQD4WBNFV20N16&pd_rd_wg=gfa1J&pd_rd_r=db04e1dc-4f1e-485a-9c91-cd7d3090de03&ref_=pd_gw_crs_zg_bs_283155')

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href='{% static "core/styles.css"%}'> 
+</head>
+
+
+<body>
+    <div class="center">
+        <h1>Enter Amazon product URLs</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input id="your_name" type="text" name="your_name" value="rand">
+            <input type="submit" value="OK">
+        </form>
+    </div>
+</body>
+
+
+</html>
