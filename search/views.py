@@ -35,7 +35,7 @@ def home(request):
         # print(rate_data)
 
     if request.method == 'POST':
-        jj = request.POST
+        post = request.POST
         print(request.POST)
         # print('type', type(jj))
         # url = {'urls' : 'hi'}
@@ -44,16 +44,16 @@ def home(request):
         #TODO: I need to make sure that the 'urls' is a LIST or something or create an if-else statement to see if its a list or not
         #MORE: I need the TEXTBOX in the HTML to GET BIGGER as the texts get inputted in
 
-        url = jj['urls']
-        x = url.split(',')
-        x = [i.strip() for i in x]
-        print("DJANGO URL", url, x)
+        urls = post['urls']
+        url = urls.split(',')
+        url = [i.strip() for i in url]
+        print("DJANGO URL", urls, url)
         #url = ','.join(url)
-        fix = ','.join(x)
-        print('DJANGO POST', jj, fix)
+        url_domains = ','.join(url)
+        print('DJANGO POST', post, url_domains)
         is_true = True
         # if is_true:
-        #     subprocess.call(['scrapy', 'crawl', 'amz', '-a', f'domain={fix}'])
+        #     subprocess.call(['scrapy', 'crawl', 'amz', '-a', f'domain={url_domains}'])
 
         #this gets called quick, just make sure this gets called after an if statement and itll work out
         #subprocess.call(['scrapy', 'crawl', 'amz'])
