@@ -1,9 +1,5 @@
-from django.http import HttpResponse
 from django.shortcuts import render
-import asyncio
-from requests_html import AsyncHTMLSession
 import subprocess
-from scrape.spiders.spder import QuotesSpider
 
 # Create your views here.
 
@@ -25,9 +21,7 @@ def home(request):
     if request.method == 'POST':
         post = request.POST
         print(request.POST)
-       
-        #TODO: I need to make sure that the 'urls' is a LIST or something or create an if-else statement to see if its a list or not
-        #MORE: I need the TEXTBOX in the HTML to GET BIGGER as the texts get inputted in
+       #
 
         urls = post['urls']
         url = urls.split(',')
@@ -36,16 +30,23 @@ def home(request):
         #fix the url
         fixed_urls = fix_url(url)
         print("DJANGO URL", urls, url)
-        #url = ','.join(url)
+        url = ','.join(url)
         url_domains = ','.join(fixed_urls)
         print('DJANGO POST', post, url_domains)
         print('FIXED URL', fixed_urls)
         is_true = True
-        # if is_true:
-        #     subprocess.call(['scrapy', 'crawl', 'amz', '-a', f'domain={url_domains}'])
+        if is_true:
+            subprocess.call(['scrapy', 'crawl', 'amz', '-a', f'domain={url_domains}'])
 
         #this gets called quick, just make sure this gets called after an if statement and itll work out
         #subprocess.call(['scrapy', 'crawl', 'amz'])
+
+        #TODO: after calling Scrapy and it returning the stuff
+        #we need to store it inside of the Model database
+        #then use the calculate.py to calculate the stuff
+        #then use matolib to plot the points
+        #then to recommend which is better
+
 
     return render(request, 'search/page.html')
  

@@ -7,6 +7,17 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+
+#12 -> 19 is necessary if we wanna use the Django.models
+import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.abspath('.')))
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
+
+import django
+django.setup()
+
 BOT_NAME = "scrape"
 
 SPIDER_MODULES = ["scrape.spiders"]
@@ -62,9 +73,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "scrape.pipelines.ScrapePipeline": 300,
-#}
+ITEM_PIPELINES = {
+   "scrape.pipelines.ScrapePipeline": 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -89,5 +100,9 @@ ROBOTSTXT_OBEY = True
 
 # Set settings whose default value is deprecated to a future-proof value
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
-TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
+
+#-------IMPORTANT-------
+#to PREVENT THE 'django sync->async' error you MUST REMOVE THIS LINE BELOW
+# TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
+
 FEED_EXPORT_ENCODING = "utf-8"
