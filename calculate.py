@@ -10,17 +10,7 @@ django.setup()
 
 
 from search.models import Global_Rating, Bounds
-#we will eventually have MULTIPLE of these...
-#first. have a LIST that have A HASHMAP ON EVERY INDEX
-#have a function that goes thru the list and computes the results and returns it
-#since it can have mulitple pts, it returns the value and res_list() will append it
-#then go thru the res list and print to matlib
 
-#need to return the data eventually so everything here needs to be in a django folder
-#it would returns lower-bounds list and upper-bound list
-
-jim = [{'whole_item': {}}, {'whole_item': {'review': '4.7', 'total_rating': '6,727'}}, {'whole_item': {'review': '4.1', 'total_rating': '1,212'}},
-       {'whole_item': {'review': '3.1', 'total_rating': '12,212'}}]
 
 data_set = []
 
@@ -77,6 +67,4 @@ def make_data():
     #gets the dataset and uses matplotlib to show the results
     search.views.get_dataset()
 
-    #MAKE A DATABASE SO WE CAN SEND THE LOWER AND UPPER BOUNDS
-    #store it inside of the json database; then derserialize it (load it) back in 'views'
-            
+
