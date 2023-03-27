@@ -7,3 +7,18 @@
   resize: none;
   overflow: hidden;
 }
+
+.refresh-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+
+
+}
+
+.button{
+  width: 120px;
+  height: 50px;
+  font-size: 15px;
+}
