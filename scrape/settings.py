@@ -28,7 +28,7 @@ NEWSPIDER_MODULE = "scrape.spiders"
 # USER_AGENT = "scrape (+https://web-production-7886.up.railway.app)"
 
 # Obey robots.txt rules
-# ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -99,10 +99,10 @@ EXTENSIONS = {
 #HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
 
 # Set settings whose default value is deprecated to a future-proof value
-REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
+# REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 
 #-------IMPORTANT-------
 #to PREVENT THE 'django sync->async' error you MUST REMOVE THIS LINE BELOW
 # TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 
-FEED_EXPORT_ENCODING = "utf-8"
+# FEED_EXPORT_ENCODING = "utf-8"
