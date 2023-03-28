@@ -1,3 +1,0 @@
----make sure to remove the following from reqs.txt---
-scrapy twisted reactor something
-scipy

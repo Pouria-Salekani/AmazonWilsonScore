@@ -6,21 +6,27 @@
 
     <link rel="stylesheet" type="text/css" href='{% static "core/styles.css"%}'> 
 
+    <style>
+        .h2-text{
+            all: inherit;
+            font-size: 30px;
+        }
+    </style>
+
 </head>
 
 
 <body>
     <div class="center">
-        <h1 class="text-test">Enter Amazon <em>product</em> URLs</h1>
+        <h1 class="text-test">Enter Amazon <em>product (front page)</em> URLs</h1>
+        <h2 class="h2-text"><u>Instructions:</u> separate each URL by a comma. Example: url1, url2, url3. Then click on "submit"</h2>
         <form method="post">
             {% csrf_token %}
-            <!-- <input id="url_value" type="text" name="urls" value=""> -->
             <textarea rows="1" cols="60" class="text-area" id="url_value" name="urls" onkeypress="grow(this)" onkeyup="grow(this)"></textarea>
             <input type="submit" value="Submit">
         </form>
 
         {% if is_true %}
-            <!-- <p id="my-text">This is the text to remove</p> -->
             <img id="remove-image" src="data:image/png;base64,{{ graph|safe }}" alt="plot">
     </div>
             <div class="refresh-center">
@@ -39,7 +45,6 @@
     }
 
     document.getElementById("remove-button").addEventListener("click", function() {
-        document.getElementById("my-text").remove();
         document.getElementById("remove-button").remove()
         document.getElementById("remove-image").remove()
     });

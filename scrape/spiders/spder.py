@@ -7,9 +7,7 @@ class QuotesSpider(scrapy.Spider):
     def __init__(self, domain = None, *args, **kwargs):
         super(QuotesSpider, self).__init__(*args, **kwargs)
         self.urlx = domain.split(',')
-        #print("THE URL", self.urlx)
-        #self.urlx = ['https://www.amazon.com/Jackson-Safety-Nemesis-22475-Anti-Fog/product-reviews/B008D81A0A/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews']
-
+        
     
     def start_requests(self):
 
