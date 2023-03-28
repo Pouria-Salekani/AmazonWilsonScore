@@ -29,8 +29,8 @@ class QuotesSpider(scrapy.Spider):
             yield scrapy.Request(url=url, headers=HEADERS, callback=self.parse)
 
     def parse(self, response):
-        #total_ratings = response.css('div[data-hook]::text').get().strip()
-        total_ratings = response.css('div[data-hook]::text').get()
+        total_ratings = response.css('div[data-hook]::text').get().strip()
+        #total_ratings = response.css('div[data-hook]::text').get()
         review = response.css('span[data-hook]::text').get()
 
         print('SCRAPE CALL')
