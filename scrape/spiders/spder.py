@@ -38,7 +38,6 @@ class QuotesSpider(scrapy.Spider):
         yield {
             'total_rating' : total_ratings[:total_ratings.find(' ')],
              'review' : review[:review.find(' ')],
-            'hi' : 'hello'
         }
 
   
