@@ -37,7 +37,7 @@ class QuotesSpider(scrapy.Spider):
         total_ratings = response.css('div[data-hook]::text').get().strip()
         #total_ratings = response.css('div[data-hook]::text').get()
         review = response.css('span[data-hook]::text').get()
-        test = response.css('div[data-hook="total-review-count]::text').get().strip()
+        test = response.css('div[data-hook="total-review-count"]::text').get().strip()
 
         print('SCRAPE CALL', test)
 
