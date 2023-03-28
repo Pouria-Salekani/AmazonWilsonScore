@@ -56,6 +56,7 @@ def home(request):
         url = ','.join(url)
         url_domains = ','.join(fixed_urls)
         
+        
         #makes it so certain stuff render out
         is_true = True
 
