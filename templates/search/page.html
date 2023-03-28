@@ -24,17 +24,15 @@
             {% csrf_token %}
             <textarea rows="1" cols="60" class="text-area" id="url_value" name="urls" onkeypress="grow(this)" onkeyup="grow(this)"></textarea>
             <input type="submit" value="Submit">
+        </form>
 
-            {% if is_true %}
+        {% if is_true %}
             <img id="remove-image" src="data:image/png;base64,{{ graph|safe }}" alt="plot">
     </div>
             <div class="refresh-center">
                 <button class="button" id="remove-button">Refresh data</button>
             </div>
         {%endif%}
-        </form>
-
-        
 
 
 </body>

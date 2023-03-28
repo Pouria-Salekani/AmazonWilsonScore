@@ -1,12 +1,13 @@
 from django.shortcuts import render
 import subprocess
-import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 import io
 import base64
 import numpy as np
 from .models import Global_Rating, Bounds
 import json
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 #def getdataset() from calc.py
@@ -35,7 +36,7 @@ def fix_url(urls):
     return fixed_urls
 
 
-
+@csrf_exempt
 def home(request):
     if request.method == 'POST':
         import calculate
