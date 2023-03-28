@@ -34,16 +34,14 @@ class QuotesSpider(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse, meta=meta)
 
     def parse(self, response):
-        #total_ratings = response.css('div[data-hook]::text').get().strip()
-        #total_ratings = response.css('div[data-hook]::text').get()
+        total_ratings = response.css('div[data-hook]::text').get().strip()
         review = response.css('span[data-hook]::text').get()
 
         print('SCRAPE CALL')
 
         yield {
-            #'total_rating' : total_ratings[:total_ratings.find(' ')],
-              'review' : review[:review.find(' ')],
-             'hi' :'bye'
+            'total_rating' : total_ratings[:total_ratings.find(' ')],
+            'review' : review[:review.find(' ')],
         }
 
   
