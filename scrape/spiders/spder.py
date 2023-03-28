@@ -30,14 +30,15 @@ class QuotesSpider(scrapy.Spider):
 
     def parse(self, response):
         #total_ratings = response.css('div[data-hook]::text').get().strip()
-        total_ratings = response.css('div[data-hook]::text').get()
+        #total_ratings = response.css('div[data-hook]::text').get()
         review = response.css('span[data-hook]::text').get()
 
-        print('SCRAPE CALL', total_ratings)
+        print('SCRAPE CALL')
 
         yield {
             #'total_rating' : total_ratings[:total_ratings.find(' ')],
              'review' : review[:review.find(' ')],
+             'hi' :'bye'
         }
 
   
