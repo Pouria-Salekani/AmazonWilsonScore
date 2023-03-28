@@ -64,53 +64,53 @@ def home(request):
 
         
         # #this does all the calculations
-        calculate.make_data()
+        # calculate.make_data()
 
 
-        #most of below is using Matplotlib to display datasets
-        x = np.linspace(0, 10, 50)
+        # #most of below is using Matplotlib to display datasets
+        # x = np.linspace(0, 10, 50)
 
-        dataset, legend = get_dataset()
+        # dataset, legend = get_dataset()
         
 
-        #create a plot with one axis object
-        fig = Figure()
-        ax = fig.subplots()
+        # #create a plot with one axis object
+        # fig = Figure()
+        # ax = fig.subplots()
 
         
-        for lb, ub in dataset:
-            ax.fill_between(x, lb, ub, alpha=0.2)
+        # for lb, ub in dataset:
+        #     ax.fill_between(x, lb, ub, alpha=0.2)
  
-        #add labels and a legend
-        ax.set_xlabel('X-axis')
-        ax.set_ylabel('Y-axis')
-        ax.set_title('Multiple Confidence Intervals')
+        # #add labels and a legend
+        # ax.set_xlabel('X-axis')
+        # ax.set_ylabel('Y-axis')
+        # ax.set_title('Multiple Confidence Intervals')
 
-        #below automatically updates as we increase the upper and lower-bound, pretty cool
-        ax.legend(legend)
+        # #below automatically updates as we increase the upper and lower-bound, pretty cool
+        # ax.legend(legend)
 
 
-        #save the plot to a buffer
-        buffer = io.BytesIO()
-        fig.savefig(buffer, format='png')
-        buffer.seek(0)
-        img = buffer.getvalue()
-        graph = base64.b64encode(img)
-        graph = graph.decode('utf-8')
-        buffer.close()
+        # #save the plot to a buffer
+        # buffer = io.BytesIO()
+        # fig.savefig(buffer, format='png')
+        # buffer.seek(0)
+        # img = buffer.getvalue()
+        # graph = base64.b64encode(img)
+        # graph = graph.decode('utf-8')
+        # buffer.close()
 
-        #clear the plot
-        fig.clf()
+        # #clear the plot
+        # fig.clf()
 
-        # TODO: after calling Scrapy and it returning the stuff -done
-        # we need to store it inside of the Model database -done
-        # then use the calculate.py to calculate the stuff -done
-        # then use matolib to plot the points -done
-        # add a refresh/remove button that removes the previous stuff - done
-        # make sure matplotlib can plot MULTIPLE points -done
-        # show the points on the screen using the matplotlib -done 
-        # then to recommend which is better
-        return render(request, 'search/page.html', {'is_true': is_true, 'graph':graph})
+        # # TODO: after calling Scrapy and it returning the stuff -done
+        # # we need to store it inside of the Model database -done
+        # # then use the calculate.py to calculate the stuff -done
+        # # then use matolib to plot the points -done
+        # # add a refresh/remove button that removes the previous stuff - done
+        # # make sure matplotlib can plot MULTIPLE points -done
+        # # show the points on the screen using the matplotlib -done 
+        # # then to recommend which is better
+        return render(request, 'search/page.html', {'is_true': is_true})
     else:
         is_true = False
         return render(request, 'search/page.html', {'is_true': is_true})
