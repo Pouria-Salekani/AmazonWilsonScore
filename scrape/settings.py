@@ -44,8 +44,8 @@ ROBOTSTXT_OBEY = True
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
 
-# Disable Telnet Console (enabled by default)
-#TELNETCONSOLE_ENABLED = False
+#Disable Telnet Console (enabled by default)
+TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
 #DEFAULT_REQUEST_HEADERS = {
