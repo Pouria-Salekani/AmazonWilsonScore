@@ -26,7 +26,7 @@ class QuotesSpider(scrapy.Spider):
         # }
 
         meta = {
-        'proxy': 'http://scraperapi:d41cdd3624ece20b9eaa69dd11776ae3@proxy-server.scraperapi.com:8001'
+        'proxy': 'http://scraperapi.render=true:d41cdd3624ece20b9eaa69dd11776ae3@proxy-server.scraperapi.com:8001'
     }
 
 
@@ -34,12 +34,12 @@ class QuotesSpider(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse, meta=meta)
 
     def parse(self, response):
-        total_ratings = response.css('div[data-hook]::text').get().strip()
+        total_ratings = response.css('div[data-hook]::text').get().strip() if not None else None
         #total_ratings = response.css('div[data-hook]::text').get()
         review = response.css('span[data-hook]::text').get()
-        test = response.css('div[data-hook="total-review-count"]::text').get().strip()
+        #test = response.css('div[data-hook="total-review-count"]::text').get().strip() if not None else None
 
-        print('SCRAPE CALL', test)
+        #print('SCRAPE CALL', test)
 
         yield {
             #'total_rating' : total_ratings[:total_ratings.find(' ')],
