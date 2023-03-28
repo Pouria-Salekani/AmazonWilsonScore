@@ -24,9 +24,6 @@ SPIDER_MODULES = ["scrape.spiders"]
 NEWSPIDER_MODULE = "scrape.spiders"
 
 
-CONCURRENT_REQUESTS = 5
-
-
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = "scrape (+https://web-production-7886.up.railway.app)"
