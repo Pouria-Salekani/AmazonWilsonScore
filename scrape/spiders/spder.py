@@ -25,20 +25,21 @@ class QuotesSpider(scrapy.Spider):
         # 'Accept-Language': 'en-US, en;q=0.5'
         # }
 
-        meta = {
-        'proxy': 'http://scraperapi:d41cdd3624ece20b9eaa69dd11776ae3@proxy-server.scraperapi.com:8001'
-    }
+    #     meta = {
+    #     'proxy': 'http://scraperapi:d41cdd3624ece20b9eaa69dd11776ae3@proxy-server.scraperapi.com:8001'
+    # }
 
 
         for url in self.urlx:
-            yield scrapy.Request(url=url, callback=self.parse, meta=meta)
+            yield scrapy.Request(url="http://api.scraperapi.com?api_key=d41cdd3624ece20b9eaa69dd11776ae3&url="+url, callback=self.parse)
 
     def parse(self, response):
-        #total_ratings = response.css('div[data-hook]::text').get().strip()
-        total_ratings = response.css('div[data-hook]::text').get()
+        total_ratings = response.css('div[data-hook]::text').get().strip()
+        #total_ratings = response.css('div[data-hook]::text').get()
         review = response.css('span[data-hook]::text').get()
+        test = response.css('div[data-hook="total-review-count"]::text').get()
 
-        print('SCRAPE CALL')
+        print('SCRAPE CALL', test)
 
         yield {
             #'total_rating' : total_ratings[:total_ratings.find(' ')],
