@@ -16,6 +16,9 @@ SECRET_KEY = 'django-insecure-ey+6t4!*!7(s*k1b(%c0r&^+6v+b$fl71ky#2h*4m3485yy*b5
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-fbc1.up.railway.app/'
+]
 
 
 # Application definition
@@ -63,10 +66,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
-CSRF_TRUSTED_ORIGINS = [
-    'https://web-production-fbc1.up.railway.app/'
-]
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
