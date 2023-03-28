@@ -38,11 +38,6 @@ class QuotesSpider(scrapy.Spider):
             yield scrapy.Request(url=url, headers=HEADERS, callback=self.parse, meta=meta)
 
     def parse(self, response):
-        #for some reason this bitch isnt getting rendered on production
-        #try different methods WITHOUT USING API since itll use credits
-        #keep tryin until it works
-        #last case scenario, just use product page
-  #   #   total_ratings = response.css('div[data-hook]::text').get().strip() if not None else None
         total_ratings = response.css('div[data-hook]::text').get().strip()
         review = response.css('span[data-hook]::text').get()
         review_2 = response.css('i.a-icon-star')
@@ -56,14 +51,7 @@ class QuotesSpider(scrapy.Spider):
 
         yield {
             'total_rating' : total_ratings[:total_ratings.find(' ')],
-            #'total_rating' : total_ratings,
             'review' : review[:review.find(' ')], #this works (also in production)
-            #'TAT' : response.xpath(".//span[@class='a-icon-alt']/text()").get(), #this works (x out of 5)
-           
           
-            #'ra': total_ratings,  #works for total rating
-            #'joej': response.css('div[data-hook="cr-filter-info-review-rating-count"]::text').get(), #works for total rating
-         
-
         }
 
