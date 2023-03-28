@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ey+6t4!*!7(s*k1b(%c0r&^+6v+b$fl71ky#2h*4m3485yy*b5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -65,7 +65,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'web-production-fbc1.up.railway.app'
+    'https://web-production-fbc1.up.railway.app/'
 ]
 
 # Database
