@@ -18,7 +18,9 @@ I made this project because I like bionomial distrubitions and probability, so I
 
 ## Website
 
-Website is here: placeholder
+Website is here: (https://web-production-a1be.up.railway.app/)
+<br>
+***IMPORTANT: once you hit the "submit" button once, PLEASE DO *NOT* HIT SUBMIT AGAIN.***
 
 ## Instructions
 
