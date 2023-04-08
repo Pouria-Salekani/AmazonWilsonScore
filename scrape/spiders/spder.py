@@ -29,13 +29,13 @@ class QuotesSpider(scrapy.Spider):
         'Connection' : 'close'
         }
 
-    #     meta = {
-    #     'proxy': 'http://scraperapi.render=true:d41cdd3624ece20b9eaa69dd11776ae3@proxy-server.scraperapi.com:8001'
-    # }
+        meta = {
+        'proxy': 'http://scraperapi.render=true:12a3151ea7f55828a0ce30dfc59895e8@proxy-server.scraperapi.com:8001'
+    }
 
 
         for url in self.urlx:
-            yield scrapy.Request(url=url, headers=HEADERS, callback=self.parse)
+            yield scrapy.Request(url=url, headers=HEADERS, callback=self.parse, meta=meta)
 
     def parse(self, response):
         total_ratings = response.css('div[data-hook]::text').get().strip()
