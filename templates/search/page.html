@@ -20,11 +20,18 @@
     <div class="center">
         <h1 class="text-test">Enter Amazon <em>product (front page)</em> URLs</h1>
         <h2 class="h2-text"><u>Instructions:</u> separate each URL by a comma. Example: url1, url2, url3. Then click on "submit"</h2>
-        <form method="post">
-            {% csrf_token %}
-            <textarea rows="1" cols="60" class="text-area" id="url_value" name="urls" onkeypress="grow(this)" onkeyup="grow(this)"></textarea>
-            <input type="submit" value="Submit">
-        </form>
+        <div id="form_div">
+            <form id="search-form" method="post">
+                {% csrf_token %}
+                <textarea rows="1" cols="60" class="text-area" id="url_value" name="urls" onkeypress="grow(this)" onkeyup="grow(this)"></textarea>
+                <input type="submit" value="Submit" onclick="hideForm()">
+            </form>
+        </div>
+
+        <!-- loader -->
+        {% load static %}
+        <img id="load" src="{% static 'images/loading-gif.gif' %}" alt="My Image" style="width: 90px; height: 90px; display: none;">
+        
 
         {% if is_true %}
             <img id="remove-image" src="data:image/png;base64,{{ graph|safe }}" alt="plot">
@@ -40,11 +47,30 @@
 
 
 <script>
+
+    // hides the *loader* after submission
+    const loader = document.getElementById('load')
+    const is_true = "{{ is_true }}" == "True";
+    if (is_true){
+        loader.classList.add('hidden')
+    }
+
+    // hides the form after submission
+    // brings loader into play
+    function hideForm() {
+        const formDiv = document.getElementById('form_div');
+        loader.style.display = 'block'
+        loader.style.margin = 'auto'
+        loader.style.paddingTop = '40px'
+        formDiv.style.display = 'none';
+    }
+
     function grow(ele){
         ele.style.height = "5px"
         ele.style.height = (ele.scrollHeight)+"px"
     }
 
+    // refreshes the data; removes image
     document.getElementById("remove-button").addEventListener("click", function() {
         document.getElementById("remove-button").remove()
         document.getElementById("remove-image").remove()
