@@ -29,7 +29,7 @@ NEWSPIDER_MODULE = "scrape.spiders"
 # USER_AGENT = "scrape (+https://web-production-7886.up.railway.app)"
 
 # Obey robots.txt rules
-# ROBOTSTXT_OBEY = True
+# ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -66,7 +66,7 @@ TELNETCONSOLE_ENABLED = False
 
 SCRAPEOPS_API_KEY = '886a5359-bdd2-4d62-a8be-82b9b4b6fcce'
 SCRAPEOPS_PROXY_ENABLED = True
-SCRAPEOPS_PROXY_SETTINGS = {'country': 'us'}
+SCRAPEOPS_PROXY_SETTINGS = {'country': 'us', 'optimize_request': True}
 
 DOWNLOADER_MIDDLEWARES = {
    # "scrape.middlewares.ScrapeDownloaderMiddleware": 543,
