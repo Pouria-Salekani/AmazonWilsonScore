@@ -66,7 +66,9 @@ TELNETCONSOLE_ENABLED = False
 
 SCRAPEOPS_API_KEY = '886a5359-bdd2-4d62-a8be-82b9b4b6fcce'
 SCRAPEOPS_PROXY_ENABLED = True
-SCRAPEOPS_PROXY_SETTINGS = {'country': 'us', 'optimize_request': True}
+# SCRAPEOPS_PROXY_SETTINGS = {'country': 'us', 'optimize_request': True}
+SCRAPEOPS_PROXY_SETTINGS = {'country': 'us'}
+
 
 DOWNLOADER_MIDDLEWARES = {
    # "scrape.middlewares.ScrapeDownloaderMiddleware": 543,

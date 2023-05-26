@@ -20,7 +20,7 @@
     <div class="center">
         <h1 class="text-test">Enter Amazon <em>product (front page)</em> URLs</h1>
         <h2 class="h2-text"><u>Instructions:</u> separate each URL by a comma. Example: url1, url2, url3. Then click on "submit"</h2>
-        <div id="form_div">
+        <div id="form_div" style="padding-top: 20px;">
             <form id="search-form" method="post">
                 {% csrf_token %}
                 <textarea rows="1" cols="60" class="text-area" id="url_value" name="urls" onkeypress="grow(this)" onkeyup="grow(this)"></textarea>
@@ -31,15 +31,29 @@
         <!-- loader -->
         {% load static %}
         <img id="load" src="{% static 'images/loading-gif.gif' %}" alt="My Image" style="width: 90px; height: 90px; display: none;">
+
+        <!-- testing  -->
         
+        <!-- <div class="refresh-center">
+            <div style="margin: 0 10px;">
+                <button class="button" id="remove-button">Refresh data</button>
+            </div>
+            <div style="margin: 0 10px;">
+                <button class="button" id="remove-button-info">Hello Test</button>
+            </div>
+        </div> -->
 
         {% if is_true %}
             <img id="remove-image" src="data:image/png;base64,{{ graph|safe }}" alt="plot">
-    </div>
-            <div class="refresh-center">
-                <button class="button" id="remove-button">Refresh data</button>
             </div>
-            <!-- <h1>works check logs</h1> -->
+                <div class="refresh-center">
+                    <div style="margin: 0 10px;">
+                        <button class="button" id="remove-button">Refresh Data</button>
+                    </div>
+                    <div style="margin: 0 10px;">
+                        <button class="button" id="remove-button-info">More Info</button>
+                    </div>
+                </div>
         {%endif%}
 
 
@@ -75,15 +89,22 @@
         formDiv.style.display = 'none';
     }
 
+    // responsible for box auto stretch
     function grow(ele){
         ele.style.height = "5px"
         ele.style.height = (ele.scrollHeight)+"px"
     }
 
-    // refreshes the data; removes image
+    // opens a new window
+    document.getElementById("remove-button-info").addEventListener("click", function() {
+        window.open("{% url 'info' %}", "_blank");
+    });
+
+    // refreshes the data; removes image and 2 buttons
     document.getElementById("remove-button").addEventListener("click", function() {
         document.getElementById("remove-button").remove()
         document.getElementById("remove-image").remove()
+        document.getElementById("remove-button-info").remove()
     });
     
 </script>

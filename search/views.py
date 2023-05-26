@@ -116,3 +116,7 @@ def home(request):
         is_true = False
         return render(request, 'search/page.html', {'is_true': is_true})
  
+
+def more_info(request):
+    data = Global_Rating.objects.values('whole_item')
+    return render(request, 'search/info.html', {'data':data})

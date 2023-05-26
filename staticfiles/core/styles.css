@@ -10,9 +10,16 @@
 
 .refresh-center {
   display: flex;
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; */
   justify-content: center;
   align-items: center;
   padding-top: 20px;
+  padding-left: 15px;
+ 
 
 
 }
