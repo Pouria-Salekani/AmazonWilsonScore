@@ -24,7 +24,6 @@ SPIDER_MODULES = ["scrape.spiders"]
 NEWSPIDER_MODULE = "scrape.spiders"
 
 
-
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = "scrape (+https://web-production-7886.up.railway.app)"
 
@@ -43,7 +42,7 @@ NEWSPIDER_MODULE = "scrape.spiders"
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+# COOKIES_ENABLED = False
 
 #Disable Telnet Console (enabled by default)
 TELNETCONSOLE_ENABLED = False
@@ -56,23 +55,29 @@ TELNETCONSOLE_ENABLED = False
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
+# SPIDER_MIDDLEWARES = {
 #    "scrape.middlewares.ScrapeSpiderMiddleware": 543,
-#}
+# }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 
 
+# SCRAPEOPS_API_KEY = '886a5359-bdd2-4d62-a8be-82b9b4b6fcce'
 SCRAPEOPS_API_KEY = '886a5359-bdd2-4d62-a8be-82b9b4b6fcce'
-SCRAPEOPS_PROXY_ENABLED = True
+# SCRAPEOPS_FAKE_USER_AGENT_ENABLED = True
+SCRAPEOPS_NUM_RESULTS = 100
+SCRAPEOPS_FAKE_HEADERS_ENABLED = True
+
+# SCRAPEOPS_PROXY_ENABLED = True #maybe turn back on later
 # SCRAPEOPS_PROXY_SETTINGS = {'country': 'us', 'optimize_request': True}
-SCRAPEOPS_PROXY_SETTINGS = {'country': 'us'}
+# SCRAPEOPS_PROXY_SETTINGS = {'country': 'us'}
 
 
 DOWNLOADER_MIDDLEWARES = {
    # "scrape.middlewares.ScrapeDownloaderMiddleware": 543,
-   'scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk': 725,
+   'scrape.middlewares.ScrapeOpsFakeBrowserHeadersMiddleware': 400
+    #'scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk': 725
 }
 
 # Enable or disable extensions
@@ -89,16 +94,16 @@ ITEM_PIPELINES = {
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
-#AUTOTHROTTLE_ENABLED = True
-# The initial download delay
-#AUTOTHROTTLE_START_DELAY = 5
-# The maximum download delay to be set in case of high latencies
-#AUTOTHROTTLE_MAX_DELAY = 60
-# The average number of requests Scrapy should be sending in parallel to
-# each remote server
-#AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
-# Enable showing throttling stats for every response received:
-#AUTOTHROTTLE_DEBUG = False
+# AUTOTHROTTLE_ENABLED = True
+# #The initial download delay
+# AUTOTHROTTLE_START_DELAY = 5
+# #The maximum download delay to be set in case of high latencies
+# AUTOTHROTTLE_MAX_DELAY = 60
+# #The average number of requests Scrapy should be sending in parallel to
+# #each remote server
+# AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
+# #Enable showing throttling stats for every response received:
+# AUTOTHROTTLE_DEBUG = False
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings

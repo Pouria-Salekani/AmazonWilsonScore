@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'search',
     'scrape', #added this just in case
     'whitenoise.runserver_nostatic',
+    'core',
 ]
 
 MIDDLEWARE = [

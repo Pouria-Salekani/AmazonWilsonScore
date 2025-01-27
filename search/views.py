@@ -7,6 +7,7 @@ import numpy as np
 from .models import Global_Rating, Bounds
 import json
 from django.views.decorators.csrf import csrf_exempt
+from urllib.parse import urlparse, urlunparse
 
 
 
@@ -26,14 +27,21 @@ def get_dataset():
     return data_set, legend
 
 #fixes the url; makes it go to review page at amazon
-def fix_url(urls):
-    fixed_urls = []
+#THIS IS OUTDATED: 2025
+# def fix_url(urls):
+#     fixed_urls = []
 
-    for u in urls:
-        dp = u.find('dp')
-        fixed_urls.append(u[:dp] + 'product-reviews' + u[dp+2:])
+#     for u in urls:
+#         dp = u.find('dp')
+#         fixed_urls.append(u[:dp] + 'product-reviews' + u[dp+2:])
 
-    return fixed_urls
+#     return fixed_urls
+
+#new method
+def new_fix(url):
+    parsed_url = urlparse(url)
+    clean_url = urlunparse((parsed_url.scheme, parsed_url.netloc, parsed_url.path, '', '', ''))
+    return clean_url.rstrip('/')
 
 
 @csrf_exempt
@@ -51,17 +59,23 @@ def home(request):
         url = urls.split(',')
         url = [i.strip() for i in url]
         
-        #fix the url
-        fixed_urls = fix_url(url)
-        url = ','.join(url)
-        url_domains = ','.join(fixed_urls)
+        #fix the url --- OUTDATED
+        # fixed_urls = fix_url(url)
+        # url = ','.join(url)
+        # url_domains = ','.join(fixed_urls)
+        #print('URL DOMAIN ', url_domains)
+
+        #new fix url
+        urlc = [new_fix(u) for u in url]
+        url_dom = ','.join(urlc)
+
         
         
         #makes it so certain stuff render out
         is_true = True
 
         if is_true:
-            subprocess.call(['scrapy', 'crawl', 'amz', '-a', f'domain={url_domains}'])
+            subprocess.call(['scrapy', 'crawl', 'amz', '-a', f'domain={url_dom}'])
 
         
         # #this does all the calculations
@@ -103,14 +117,7 @@ def home(request):
         #clear the plot
         fig.clf()
 
-        # TODO: after calling Scrapy and it returning the stuff -done
-        # we need to store it inside of the Model database -done
-        # then use the calculate.py to calculate the stuff -done
-        # then use matolib to plot the points -done
-        # add a refresh/remove button that removes the previous stuff - done
-        # make sure matplotlib can plot MULTIPLE points -done
-        # show the points on the screen using the matplotlib -done 
-        # then to recommend which is better
+       
         return render(request, 'search/page.html', {'is_true': is_true, 'graph':graph})
     else:
         is_true = False
