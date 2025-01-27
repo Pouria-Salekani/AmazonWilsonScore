@@ -66,18 +66,18 @@ TELNETCONSOLE_ENABLED = False
 # SCRAPEOPS_API_KEY = '886a5359-bdd2-4d62-a8be-82b9b4b6fcce'
 SCRAPEOPS_API_KEY = '886a5359-bdd2-4d62-a8be-82b9b4b6fcce'
 # SCRAPEOPS_FAKE_USER_AGENT_ENABLED = True
-SCRAPEOPS_NUM_RESULTS = 100
-SCRAPEOPS_FAKE_HEADERS_ENABLED = True
+# SCRAPEOPS_NUM_RESULTS = 100
+# SCRAPEOPS_FAKE_HEADERS_ENABLED = True
 
-# SCRAPEOPS_PROXY_ENABLED = True #maybe turn back on later
+SCRAPEOPS_PROXY_ENABLED = True #maybe turn back on later
 # SCRAPEOPS_PROXY_SETTINGS = {'country': 'us', 'optimize_request': True}
-# SCRAPEOPS_PROXY_SETTINGS = {'country': 'us'}
+SCRAPEOPS_PROXY_SETTINGS = {'country': 'us'}
 
 
 DOWNLOADER_MIDDLEWARES = {
    # "scrape.middlewares.ScrapeDownloaderMiddleware": 543,
-   'scrape.middlewares.ScrapeOpsFakeBrowserHeadersMiddleware': 400
-    #'scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk': 725
+   # 'scrape.middlewares.ScrapeOpsFakeBrowserHeadersMiddleware': 400
+   'scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk': 725
 }
 
 # Enable or disable extensions
